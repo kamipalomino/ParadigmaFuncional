@@ -1,6 +1,8 @@
---Import GHC.Num
--- Definimos una función que suma dos números
-suma :: Int -> Int -> Int
+--import GHC.Num
+--import Setup
+--import Library
+
+--suma :: Int -> Int -> Int
 suma x y = x + y
 
 --Definir la función esMultiploDe/2, que devuelve True si el segundo es múltiplo del primero,
