@@ -56,13 +56,36 @@ diasNormales medida = (not . diasParejos) medida && (not . diasLocos) medida
 --3 kg x cm hasta 3 metros, 2 kg x cm arriba de los 3 metros. P.ej. 2 metros ⇒ 600 kg, 5 metros ⇒ 1300 kg.
 
 pesoPino altura 
-  | altura < 300	= 3 * altura
-  | altura == 300	= 3* altura 
-  | otherwise 	= 2 * altura 
+  | (>) altura 3	= 3 * 300 + (altura * 100 - 300)* 2
+  | otherwise 	= 300 * altura 
+
+
+-- Aplicacion Parcial
+siguiente = (+1)
+mitad = (* 0.5)
+inversa = (1/)
+triple = (*3)
+esNumeroPositivo = (>= 0)
+cuadrado = (^2)
+-- Composition 	g x = (g . f) x
+esMultiploDe :: Int -> Int -> Bool
+esMultiploDe unNum  = (== 0) . (mod unNum)
+
+esBisiesto :: Int -> Bool
+esBisiesto n= esMultiploDe n 4
+--esBisiesto= 400 (esMultiploDe)
+
+inversaRaizCuadrada = inversa . sqrt
+incrementMCuadradoN :: Int -> Int -> Int
+incrementMCuadradoN n m = ((+ m) . cuadrado) n 
+
+esResultadoPar :: Int -> Int -> Bool
+esResultadoPar n = even . (n^)
+
 
 main :: IO ()
 main = do
 --dia :: Medicion 
 --dia (4, 6
-let resultado = pesoPino 20 
+let resultado = pesoPino 5
 putStrLn ("el resultado es: "  ++  show resultado)
