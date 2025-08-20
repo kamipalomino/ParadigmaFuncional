@@ -1,0 +1,5 @@
+data Producto = Prod{
+             nombre ::[Char] ,
+precio:: Float,
+
+} deriving (Show)
